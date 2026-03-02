@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FiDeSR: High-Fidelity and Detail-Preserving One-Step Diffusion Super-Resolution (CVPR 2026).">
+  <meta name="keywords" content="FiDeSR, Real-ISR, Super-Resolution, Diffusion, One-step diffusion, Frequency, LoRA">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FiDeSR</title>
+
+  <!-- Optional: Google Analytics (disable unless you have your own ID) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    // gtag('config', 'G-XXXXXXXXXX'); // TODO: replace with your GA id
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- Bulma + template assets (keep same structure as NarVid) -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <!-- TODO: replace favicon with your own -->
+  <!-- <link rel="icon" href="./static/images/favicon.png"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">
+            FiDeSR: High-Fidelity and Detail-Preserving One-Step Diffusion Super-Resolution
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=dJlUIMUAAAAJ&hl=ko">Aro Kim</a><sup>1,*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=0eNFVBcAAAAJ&hl=ko">Myeongjin Jang</a><sup>1,*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=ko&user=HTPaLZ4AAAAJ">Chaewon Moon</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Youngjin Shin</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=ko&user=-DlLMawAAAAJ">Jinwoo Jeong</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=ko&user=ZG8REuYAAAAJ">Sang-hyo Park</a><sup>1, †</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Kyungpook National University</span>
+            &nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Korea Electronics Technology Institute (KETI)</span>
+          </div>
+
+          <div class="is-size-6">
+            <span class="author-block">
+               Email: {arokim37, jmj4431, moonchaewon2, 2021112241, s.park}@knu.ac.kr, jw.jeong@keti.re.kr
+            </span>
+          </div>
+          <div class="is-size-6">
+            <span class="author-block">*Equal contribution. †Corresponding author.</span>
+          </div>
+
+          <div class="is-size-4">
+            <span class="author-block">Accepted by CVPR 2026</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <!-- TODO: Replace links -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/XXXX.XXXXX"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- <span class="link-block">
+                <a href="./static/pdfs/paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+
+              <span class="link-block">
+                <a href="https://github.com/Ar0Kim/FiDeSR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <!-- <span class="link-block">
+                <a href="./static/pdfs/supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-alt"></i></span>
+                  <span>Supplementary</span>
+                </a>
+              </span> -->
+
+              <!-- Optional -->
+              <!--
+              <span class="link-block">
+                <a href="./static/pdfs/poster.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-image"></i></span>
+                  <span>Poster</span>
+                </a>
+              </span>
+              -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <!-- TODO: put teaser image here: static/images/teaser.png -->
+          <img src="./static/images/teaser.png" alt="FiDeSR Teaser">
+          <!-- <img src="./static/images/result.png" alt="Qualitative Results" class="image is-centered"> -->
+        </figure>
+        <b>Teaser.</b> FiDeSR achieves superior perceptual quality while maintaining competitive fidelity across perceptual–fidelity metric pairs
+        (e.g., PSNR/SSIM/LPIPS vs. MANIQA) on Real-ISR benchmarks.
+        <div class="content has-text-justified">
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-3">Abstract</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Diffusion-based approaches have recently driven remarkable progress in real-world image super-resolution (SR).
+            However, existing methods still struggle to simultaneously preserve fine details and ensure high-fidelity reconstruction,
+            often resulting in suboptimal visual quality.
+            In this paper, we propose <strong>FiDeSR</strong>, a high-fidelity and detail-preserving one-step diffusion super-resolution framework.
+            During training, we introduce a detail-aware weighting strategy that adaptively emphasizes regions where the model exhibits higher prediction errors.
+            During inference, low- and high-frequency adaptive enhancers further refine the reconstruction without requiring model retraining,
+            enabling flexible enhancement control.
+            To further improve the reconstruction accuracy, FiDeSR incorporates a residual-in-residual noise refinement,
+            which corrects prediction errors in the diffusion noise and enhances fine detail recovery.
+            FiDeSR achieves superior real-world SR performance compared to existing diffusion-based methods,
+            producing outputs with both high perceptual quality and faithful content restoration.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Method -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">Method</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            <strong>FiDeSR</strong> is a one-step diffusion framework for Real-ISR that improves both <em>structural fidelity</em> and
+            <em>fine-detail recovery</em>. Given a low-quality input <em>x<sub>L</sub></em>, we encode it into a latent <em>z<sub>L</sub></em> using a pretrained VAE.
+            A diffusion U-Net predicts an initial latent residual <em>r</em> that bridges <em>z<sub>L</sub></em> toward its HQ counterpart.
+            We then refine this residual with <strong>LRRB</strong> (<em>r′ = r + Δr</em>) to obtain a refined latent,
+            which is decoded to produce the SR output <em>x<sub>SR</sub></em>.
+            During training, <strong>DAW</strong> focuses learning on texture-/edge-rich regions where the model currently underperforms.
+            During inference, <strong>LFIM</strong> enables <em>controllable</em> low-/high-frequency enhancement by selectively injecting LF/HF components
+            into the refined latent—without any additional training.
+          </p>
+
+          <figure style="margin: 1.25rem auto; text-align: center;">
+            <img src="./static/images/framework.png"
+                 alt="FiDeSR Framework"
+                 style="display:block; margin: 0 auto; max-width: 100%; height: auto;">
+            <figcaption class="is-size-7" style="margin-top: .5rem;">
+              Overview of FiDeSR: one-step residual prediction, LRRB refinement, and LFIM-based frequency injection.
+            </figcaption>
+          </figure>
+
+          <ul>
+            <li>
+              <b>DAW</b>: difficulty-aware loss weighting using a <i>detail map</i> (e.g., edge/texture responses) and an <i>error map</i>
+              (pixel + perceptual discrepancies) to emphasize visually important regions.
+            </li>
+            <li>
+              <b>LRRB</b>: latent residual refinement that predicts a correction <i>Δr</i> conditioned on <i>z<sub>L</sub></i> and <i>r</i>,
+              stabilizing one-step reconstruction and reducing residual artifacts.
+            </li>
+            <li>
+              <b>LFIM</b>: selective LF/HF injection with <i>spatial</i> and <i>channel</i> gating for controllable enhancement at inference
+              (balancing structure vs. texture).
+            </li>
+          </ul>
+
+          <details>
+            <summary><b>More details (training & inference)</b></summary>
+            <p>
+              <b>Training.</b> DAW spatially weights the reconstruction losses (e.g., pixel/perceptual terms) and the regularization term
+              (e.g., distillation-based guidance) so the model focuses on hard, detail-rich regions rather than over-optimizing easy areas.
+              <br>
+              <b>Inference.</b> After the single diffusion step and LRRB refinement, LFIM decomposes the refined latent into LF/HF components
+              (via frequency filtering) and injects them selectively using spatial/channel gates, allowing users to tune the fidelity–detail balance.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">Qualitative Results</h2>
+
+        <div class="content has-text-justified">
+          <!-- TODO: put qualitative figure here: static/images/qualitative.png -->
+          <img src="./static/images/result.png" alt="Qualitative Results" class="image is-centered">
+          <img src="./static/images/result2.png" alt="Qualitative Results" class="image is-centered">
+          <p></p>
+
+          <p>
+            FiDeSR restores both structural integrity and fine details more faithfully while producing sharper textures and a more natural appearance,
+            compared to state-of-the-art diffusion-based SR baselines.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+
+    <!-- TODO: update if official CVPR bib becomes available -->
+    <pre><code>@inproceedings{kim2026fidesr,
+  title     = {FiDeSR: High-Fidelity and Detail-Preserving One-Step Diffusion Super-Resolution},
+  author    = {Aro Kim, Myeongjin Jang, Chaewon Moon, Youngjin Shin, Jinwoo Jeong and Sang-hyo Park},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> template,
+            licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+              Creative Commons Attribution-ShareAlike 4.0 International License
+            </a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
