@@ -3,7 +3,7 @@
 This repository contains the source code for the **FiDeSR** project page.
 
 **Project page:** https://diffusion-sr.github.io/FiDeSR/  
-**Paper (arXiv):** https://arxiv.org/abs/XXXX.XXXXX _(TODO)_  
+**Paper (arXiv):** https://arxiv.org/abs/2603.02692   
 **Code:** https://github.com/Ar0Kim/FiDeSR
 
 ---
